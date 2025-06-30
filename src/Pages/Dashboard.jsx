@@ -45,7 +45,7 @@ function Dashboard() {
     })
 
     useEffect(() => {
-        axios.get('https://job-tracker-app-omega.vercel.app/jobs')
+        axios.get('https://jobtrackerbackend-5ovy.onrender.com/jobs')
             .then((res) => setJobs(res.data))
             .catch((err) => console.log(err))
 
@@ -54,7 +54,7 @@ function Dashboard() {
 
     // Handle new job method 
     const handleNewJob = () => {
-        axios.post('https://job-tracker-app-omega.vercel.app/jobs', {
+        axios.post('https://jobtrackerbackend-5ovy.onrender.com/', {
             jobTitle: jobApp.jobTitle,
             companyName: jobApp.companyName,
             location: jobApp.location,
@@ -80,7 +80,7 @@ function Dashboard() {
     // Handle save changes job method 
     const handleSaveChanges = () => {
 
-        axios.put(`https://job-tracker-app-omega.vercel.app/jobs/${job}`, {
+        axios.put(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${job}`, {
             jobTitle: updateJob.jobTitle,
             companyName: updateJob.companyName,
             link: updateJob.link,
@@ -98,7 +98,7 @@ function Dashboard() {
     // Handle update job method 
     const handleUpdateJob = (id) => {
         setOpenUpdateModal(true)
-        axios.get(`/jobs/${id}`)
+        axios.get(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`)
             .then((res) => setUpdateJob(res.data[0]))
             .catch((err) => console.log(err))
         dispatch(getCurrentJob(id))
@@ -106,7 +106,7 @@ function Dashboard() {
 
     // Delete Job Application
     const handleDeleteJob = (id) => {
-        axios.delete(`https://job-tracker-app-omega.vercel.app/jobs/${id}`)
+        axios.delete(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`)
             .then(() => console.log("Job has been deleted"))
             .catch(() => console.log("failed to delete job"))
 

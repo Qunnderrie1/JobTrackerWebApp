@@ -28,7 +28,7 @@ function Login() {
         }
 
 
-        axios.post('https://job-tracker-app-omega.vercel.app/user', {
+        axios.post('https://jobtrackerbackend-5ovy.onrender.com/user', {
             email: email,
             password: password
         }).then((res) => {
@@ -37,7 +37,7 @@ function Login() {
             if (res.data) {
                 // Login user in
                 dispatch(loginUser(res.data))
-                navigate('/jobtrackerapp/dashboard')
+                navigate('/JobTrackerWebApp/dashboard')
                 console.log(res.data)
 
             }
@@ -73,7 +73,7 @@ function Login() {
                     <button onClick={handleLogin} className='mt-14 bg-blue-600 w-full py-2 text-white font-semibold rounded-md'>Login</button>
 
                     <div className='mt-7'>
-                        <p className='text-[14px]'>Don't have an account? <Link to='/jobtrackerapp/signup' className='text-blue-600'>Sign Up</Link></p>
+                        <p className='text-[14px]'>Don't have an account? <Link to='/JobTrackerWebApp/signup' className='text-blue-600'>Sign Up</Link></p>
                     </div>
                 </form>
 

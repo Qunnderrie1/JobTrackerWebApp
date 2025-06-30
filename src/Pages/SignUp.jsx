@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { loginFailed, loginUser, logoutUser, gettingCredentials } from '../Slices/UserSlice.js'
 function SignUp() {
 
 
@@ -31,13 +30,13 @@ function SignUp() {
         }
 
 
-        axios.post("https://job-tracker-app-omega.vercel.app/user/new", {
+        axios.post("https://jobtrackerbackend-5ovy.onrender.com/new", {
             username: username,
             password: password,
             email: email
         }).then((res) => {
             if (res.data) {
-                navigate("/jobtrackerapp")
+                navigate("/JobTrackerWebApp")
             }
         }
         ).catch(() => console.log("Failed to create user."))
@@ -60,7 +59,7 @@ function SignUp() {
                     <button onClick={handleSignUp} className='mt-14 bg-blue-600 w-full py-2 text-white font-semibold rounded-md'>Sign Up</button>
 
                     <div className='mt-7'>
-                        <p className='text-[14px]'>Already have an account? <Link to='/jobtrackerapp' className='text-blue-600'>Login</Link></p>
+                        <p className='text-[14px]'>Already have an account? <Link to='/JobTrackerWebApp' className='text-blue-600'>Login</Link></p>
                     </div>
                 </form>
 
