@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://qunnderrie1.github.io/Job_Tracker_App",
+  "homepage": "http://qunnderrie1.github.io/JobTrackerWebApp",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",

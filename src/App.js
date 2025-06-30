@@ -11,11 +11,11 @@ function App() {
   return (
     <div className="App overflow-x-hidden ">
       <Routes>
-        <Route path='/Job_Tracker_App' element={<Login />} />
-        <Route path='/Job_Tracker_App/signup' element={<SignUp />} />
+        <Route path='/JobTrackerWebApp' element={<Login />} />
+        <Route path='/JobTrackerWebApp/signup' element={<SignUp />} />
         <Route element={<Protected />} >
-          <Route path='/Job_Tracker_App/dashboard' element={<Dashboard />} />
-          <Route path='/Job_Tracker_App/profile' element={<Profile />} />
+          <Route path='/JobTrackerWebApp/dashboard' element={<Dashboard />} />
+          <Route path='/JobTrackerWebApp/profile' element={<Profile />} />
         </Route>
         <Route />
       </Routes>
