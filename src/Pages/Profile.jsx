@@ -21,7 +21,7 @@ function Profile() {
         axios.delete("https://jobtrackerbackend-5ovy.onrender.com/user/delete")
             .then(() => console.log("deleting user account"))
             .catch(() => console.log("error delete user account"))
-        navigate('/JobTrackerWebApp')
+        navigate('/https://jobtrackerwebapp.onrender.com/')
     }
 
 

@@ -11,11 +11,11 @@ function App() {
   return (
     <div className="App overflow-x-hidden ">
       <Routes>
-        <Route path='/JobTrackerWebApp' element={<Login />} />
-        <Route path='/JobTrackerWebApp/signup' element={<SignUp />} />
+        <Route path='/https://jobtrackerwebapp.onrender.com/' element={<Login />} />
+        <Route path='/https://jobtrackerwebapp.onrender.com/signup' element={<SignUp />} />
         <Route element={<Protected />} >
-          <Route path='/JobTrackerWebApp/dashboard' element={<Dashboard />} />
-          <Route path='/JobTrackerWebApp/profile' element={<Profile />} />
+          <Route path='/https://jobtrackerwebapp.onrender.com/dashboard' element={<Dashboard />} />
+          <Route path='https://jobtrackerwebapp.onrender.com/profile' element={<Profile />} />
         </Route>
         <Route />
       </Routes>

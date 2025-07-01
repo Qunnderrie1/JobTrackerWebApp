@@ -37,7 +37,7 @@ function Login() {
             if (res.data) {
                 // Login user in
                 dispatch(loginUser(res.data))
-                navigate('/JobTrackerWebApp/dashboard')
+                navigate('https://jobtrackerwebapp.onrender.com/dashboard')
                 console.log(res.data)
 
             }
