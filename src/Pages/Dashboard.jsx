@@ -9,7 +9,7 @@ import { changeStatusColor } from '../Helper/changeStatusColor'
 import { shortWord } from '../Helper/shortWord'
 import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../Components/Footer'
-import { API_URL } from '../Helper/ApiUrl.js';
+
 
 
 function Dashboard() {
@@ -47,7 +47,7 @@ function Dashboard() {
     })
 
     useEffect(() => {
-        axios.get(`${API}/jobs`)
+        axios.get(`https://jobtrackerbackend-5ovy.onrender.com/jobs`)
             .then((res) => setJobs(res.data))
             .catch((err) => console.log(err))
 
@@ -82,7 +82,7 @@ function Dashboard() {
     // Handle save changes job method 
     const handleSaveChanges = () => {
 
-        axios.put(`${API}/jobs/${job}`, {
+        axios.put(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${job}`, {
             jobTitle: updateJob.jobTitle,
             companyName: updateJob.companyName,
             link: updateJob.link,
@@ -100,7 +100,7 @@ function Dashboard() {
     // Handle update job method 
     const handleUpdateJob = (id) => {
         setOpenUpdateModal(true)
-        axios.get(`${API}/jobs/${id}`)
+        axios.get(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`)
             .then((res) => setUpdateJob(res.data[0]))
             .catch((err) => console.log(err))
         dispatch(getCurrentJob(id))
@@ -108,7 +108,7 @@ function Dashboard() {
 
     // Delete Job Application
     const handleDeleteJob = (id) => {
-        axios.delete(`${API}/jobs/${id}`)
+        axios.delete(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`)
             .then(() => console.log("Job has been deleted"))
             .catch(() => console.log("failed to delete job"))
 

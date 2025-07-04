@@ -3,16 +3,14 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { loginFailed, loginUser, logoutUser, gettingCredentials } from '../Slices/UserSlice.js'
-import { API_URL } from '../Helper/ApiUrl.js';
+
 function Login() {
 
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const API = API_URL;
 
-    console.log(`API Link ${API}`)
 
     const navigate = useNavigate();
 
@@ -34,7 +32,7 @@ function Login() {
         if (!email && !password) {
             return alert("Please enter in a value")
         }
-        axios.post(`${API}/user/login`, {
+        axios.post("https://jobtrackerbackend-5ovy.onrender.com/user/login", {
             email: email,
             password: password
         }).then((res) => {

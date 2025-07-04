@@ -34,7 +34,7 @@ function SignUp() {
         if (!username && !password && !email) {
             return alert("Please enter in a value")
         }
-        axios.post(`${API}/user/new`, {
+        axios.post("https://jobtrackerbackend-5ovy.onrender.com/user/new", {
             username: username,
             password: password,
             email: email
