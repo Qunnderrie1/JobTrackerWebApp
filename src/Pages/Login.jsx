@@ -26,9 +26,7 @@ function Login() {
         if (!email && !password) {
             return alert("Please enter in a value")
         }
-
-
-        axios.post('https://jobtrackerbackend-5ovy.onrender.com/user', {
+        axios.post('/user/login', {
             email: email,
             password: password
         }).then((res) => {
@@ -73,7 +71,7 @@ function Login() {
                     <button onClick={handleLogin} className='mt-14 bg-blue-600 w-full py-2 text-white font-semibold rounded-md'>Login</button>
 
                     <div className='mt-7'>
-                        <p className='text-[14px]'>Don't have an account? <Link to='/JobTrackerWebApp/signup' className='text-blue-600'>Sign Up</Link></p>
+                        <p className='text-[14px]'>Don't have an account? <Link to='https://jobtrackerwebapp.onrender.com/signup' className='text-blue-600'>Sign Up</Link></p>
                     </div>
                 </form>
 

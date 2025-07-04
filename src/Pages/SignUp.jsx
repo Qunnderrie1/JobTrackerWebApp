@@ -28,15 +28,13 @@ function SignUp() {
         if (!username && !password && !email) {
             return alert("Please enter in a value")
         }
-
-
-        axios.post("https://jobtrackerbackend-5ovy.onrender.com/new", {
+        axios.post("/user/new", {
             username: username,
             password: password,
             email: email
         }).then((res) => {
             if (res.data) {
-                navigate("https://jobtrackerwebapp.onrender.com/")
+                navigate("/")
             }
         }
         ).catch(() => console.log("Failed to create user."))
@@ -59,7 +57,7 @@ function SignUp() {
                     <button onClick={handleSignUp} className='mt-14 bg-blue-600 w-full py-2 text-white font-semibold rounded-md'>Sign Up</button>
 
                     <div className='mt-7'>
-                        <p className='text-[14px]'>Already have an account? <Link to='/https://jobtrackerwebapp.onrender.com/' className='text-blue-600'>Login</Link></p>
+                        <p className='text-[14px]'>Already have an account? <Link to='/' className='text-blue-600'>Login</Link></p>
                     </div>
                 </form>
 
