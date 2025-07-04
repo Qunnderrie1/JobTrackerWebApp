@@ -34,7 +34,7 @@ function Login() {
         axios.post("https://jobtrackerbackend-5ovy.onrender.com/user/login", {
             email: email,
             password: password
-        }).then((res) => {
+        }, { withCredentials: true }).then((res) => {
             // Loading user credentials
             dispatch(gettingCredentials())
             if (res.data) {
