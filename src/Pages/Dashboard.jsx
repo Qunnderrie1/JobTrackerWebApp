@@ -45,7 +45,7 @@ function Dashboard() {
     })
 
     useEffect(() => {
-        axios.get(`https://jobtrackerbackend-5ovy.onrender.com/jobs`, { withCredentials: true })
+        axios.get('https://jobtrackerbackend-5ovy.onrender.com/jobs',)
             .then((res) => setJobs(res.data))
             .catch((error) => console.log('Failed to get user jobs ' + error.message))
 
@@ -54,7 +54,7 @@ function Dashboard() {
 
     // Handle new job method 
     const handleNewJob = () => {
-        axios.post(`https://jobtrackerbackend-5ovy.onrender.com/jobs`, {
+        axios.post('https://jobtrackerbackend-5ovy.onrender.com/jobs', {
             jobTitle: jobApp.jobTitle,
             companyName: jobApp.companyName,
             location: jobApp.location,
