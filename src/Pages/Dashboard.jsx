@@ -9,7 +9,7 @@ import { changeStatusColor } from '../Helper/changeStatusColor'
 import { shortWord } from '../Helper/shortWord'
 import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../Components/Footer'
-
+import { API_URL } from '../Helper/ApiUrl.js';
 
 
 function Dashboard() {
@@ -21,6 +21,8 @@ function Dashboard() {
     const [appSearchResults, setAppSearchResults] = useState([{}])
 
     const dispatch = useDispatch();
+
+    const API = API_URL;
 
 
     const { job } = useSelector((state) => state.currentJob)
@@ -45,7 +47,7 @@ function Dashboard() {
     })
 
     useEffect(() => {
-        axios.get('https://jobtrackerbackend-5ovy.onrender.com/jobs')
+        axios.get(`${API}/jobs`)
             .then((res) => setJobs(res.data))
             .catch((err) => console.log(err))
 
@@ -54,7 +56,7 @@ function Dashboard() {
 
     // Handle new job method 
     const handleNewJob = () => {
-        axios.post('https://jobtrackerbackend-5ovy.onrender.com/', {
+        axios.post(`${API}`, {
             jobTitle: jobApp.jobTitle,
             companyName: jobApp.companyName,
             location: jobApp.location,
@@ -80,7 +82,7 @@ function Dashboard() {
     // Handle save changes job method 
     const handleSaveChanges = () => {
 
-        axios.put(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${job}`, {
+        axios.put(`${API}/jobs/${job}`, {
             jobTitle: updateJob.jobTitle,
             companyName: updateJob.companyName,
             link: updateJob.link,
@@ -98,7 +100,7 @@ function Dashboard() {
     // Handle update job method 
     const handleUpdateJob = (id) => {
         setOpenUpdateModal(true)
-        axios.get(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`)
+        axios.get(`${API}/jobs/${id}`)
             .then((res) => setUpdateJob(res.data[0]))
             .catch((err) => console.log(err))
         dispatch(getCurrentJob(id))
@@ -106,7 +108,7 @@ function Dashboard() {
 
     // Delete Job Application
     const handleDeleteJob = (id) => {
-        axios.delete(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`)
+        axios.delete(`${API}/jobs/${id}`)
             .then(() => console.log("Job has been deleted"))
             .catch(() => console.log("failed to delete job"))
 
@@ -138,7 +140,7 @@ function Dashboard() {
                             </button> 
                             */
                         }
-                        <Link to='/jobtrackerapp/profile'>
+                        <Link to='/profile'>
                             <FontAwesomeIcon icon={faUserCircle} className='text-xl' />
                         </Link>
                     </div>

@@ -3,13 +3,14 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { loginFailed, loginUser, logoutUser, gettingCredentials } from '../Slices/UserSlice.js'
+import { API_URL } from '../Helper/ApiUrl.js';
 function Login() {
 
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const API = process.env.REACT_APP_API_URL;
+    const API = API_URL;
 
     console.log(`API Link ${API}`)
 

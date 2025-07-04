@@ -11,17 +11,17 @@ function Profile() {
 
 
     const handleLogout = () => {
-        axios.post("https://jobtrackerbackend-5ovy.onrender.com/user/logout")
+        axios.post(`${API}/user/logout`)
             .then(() => console.log("logging user out"))
             .catch(() => console.log("error login user out"))
         navigate('/jobtrackerapp')
     }
 
     const handleDeleteAccount = () => {
-        axios.delete("https://jobtrackerbackend-5ovy.onrender.com/user/delete")
+        axios.delete(`${API}/user/delete`)
             .then(() => console.log("deleting user account"))
             .catch(() => console.log("error delete user account"))
-        navigate('/https://jobtrackerwebapp.onrender.com/')
+        navigate('/')
     }
 
 

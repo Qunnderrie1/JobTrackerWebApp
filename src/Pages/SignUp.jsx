@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
+import { API_URL } from '../Helper/ApiUrl.js';
 function SignUp() {
 
 
@@ -10,7 +11,7 @@ function SignUp() {
     const [email, setEmail] = useState("")
 
 
-    const API = process.env.REACT_APP_API_URL;
+    const API = API_URL;
 
     const navigate = useNavigate();
 
@@ -24,10 +25,12 @@ function SignUp() {
     }
 
 
+    console.log(API)
+
+
 
     //
     const handleSignUp = () => {
-
         if (!username && !password && !email) {
             return alert("Please enter in a value")
         }
