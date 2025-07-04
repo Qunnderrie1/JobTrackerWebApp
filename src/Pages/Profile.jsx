@@ -14,7 +14,7 @@ function Profile() {
         axios.post(`https://jobtrackerbackend-5ovy.onrender.com/user/logout`)
             .then(() => console.log("logging user out"))
             .catch(() => console.log("error login user out"))
-        navigate('/jobtrackerapp')
+        navigate('/')
     }
 
     const handleDeleteAccount = () => {
