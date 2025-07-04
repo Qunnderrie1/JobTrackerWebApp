@@ -14,8 +14,8 @@ function App() {
         <Route path='https://jobtrackerwebapp.onrender.com/' element={<Login />} />
         <Route path='https://jobtrackerwebapp.onrender.com/signup' element={<SignUp />} />
         <Route element={<Protected />} >
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route path='https://jobtrackerwebapp.onrender.com/dashboard' element={<Dashboard />} />
+          <Route path='https://jobtrackerwebapp.onrender.com/profile' element={<Profile />} />
         </Route>
         <Route />
       </Routes>

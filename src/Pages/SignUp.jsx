@@ -9,6 +9,9 @@ function SignUp() {
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
 
+
+    const API = process.env.REACT_APP_API_URL;
+
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
@@ -28,7 +31,7 @@ function SignUp() {
         if (!username && !password && !email) {
             return alert("Please enter in a value")
         }
-        axios.post("/user/new", {
+        axios.post(`${API}/user/new`, {
             username: username,
             password: password,
             email: email

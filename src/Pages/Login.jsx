@@ -9,6 +9,8 @@ function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const API = process.env.REACT_APP_API_URL;
+
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
@@ -26,7 +28,7 @@ function Login() {
         if (!email && !password) {
             return alert("Please enter in a value")
         }
-        axios.post('/user/login', {
+        axios.post(`${API}/user/login`, {
             email: email,
             password: password
         }).then((res) => {
