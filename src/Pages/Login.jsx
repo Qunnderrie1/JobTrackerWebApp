@@ -11,6 +11,8 @@ function Login() {
 
     const API = process.env.REACT_APP_API_URL;
 
+    console.log(`API Link ${API}`)
+
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
@@ -21,6 +23,8 @@ function Login() {
         e.preventDefault();
 
     }
+
+    console.log(API)
 
 
     const handleLogin = () => {
