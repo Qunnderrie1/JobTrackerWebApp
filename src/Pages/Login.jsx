@@ -24,10 +24,11 @@ function Login() {
 
     }
 
-    console.log(API)
-
 
     const handleLogin = () => {
+
+        console.log(API)
+        console.log("Loggin user....")
 
         if (!email && !password) {
             return alert("Please enter in a value")
