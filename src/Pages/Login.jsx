@@ -68,8 +68,6 @@ function Login() {
                         </div> : <p></p>
                     }
 
-
-
                     <div className='mt-[60px] flex flex-col gap-8'>
                         <input onChange={(e) => setEmail(e.target.value)} value={email} className='form-control' placeholder='Email Address' />
                         <input type='password' onChange={(e) => setPassword(e.target.value)} value={password} className='form-control' placeholder='Password' />
