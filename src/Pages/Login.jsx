@@ -26,7 +26,6 @@ function Login() {
 
     const handleLogin = () => {
 
-        console.log(API)
         console.log("Loggin user....")
 
         if (!email && !password) {

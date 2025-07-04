@@ -22,8 +22,6 @@ function Dashboard() {
 
     const dispatch = useDispatch();
 
-    const API = API_URL;
-
 
     const { job } = useSelector((state) => state.currentJob)
     const { user } = useSelector((state) => state.user)
@@ -56,7 +54,7 @@ function Dashboard() {
 
     // Handle new job method 
     const handleNewJob = () => {
-        axios.post(`${API}`, {
+        axios.post(`https://jobtrackerbackend-5ovy.onrender.com/jobs`, {
             jobTitle: jobApp.jobTitle,
             companyName: jobApp.companyName,
             location: jobApp.location,
