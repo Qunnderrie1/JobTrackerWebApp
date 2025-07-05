@@ -45,7 +45,7 @@ function Dashboard() {
     })
 
     useEffect(() => {
-        axios.get('https://jobtrackerbackend-5ovy.onrender.com/jobs',)
+        axios.get('https://jobtrackerbackend-5ovy.onrender.com/jobs', { withCredentials: true })
             .then((res) => setJobs(res.data))
             .catch((error) => console.log('Failed to get user jobs ' + error.message))
 
@@ -87,7 +87,7 @@ function Dashboard() {
             location: updateJob.location,
             dateApplied: updateJob.dateApplied,
             status: updateJob.status,
-        })
+        }, { withCredentials: true })
             .then(() => console.log("job has been updated"))
             .catch(() => console.log("falied to update job"))
 
@@ -98,7 +98,7 @@ function Dashboard() {
     // Handle update job method 
     const handleUpdateJob = (id) => {
         setOpenUpdateModal(true)
-        axios.get(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`)
+        axios.get(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`, { withCredentials: true })
             .then((res) => setUpdateJob(res.data[0]))
             .catch((err) => console.log(err))
         dispatch(getCurrentJob(id))
@@ -106,7 +106,7 @@ function Dashboard() {
 
     // Delete Job Application
     const handleDeleteJob = (id) => {
-        axios.delete(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`)
+        axios.delete(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`, { withCredentials: true })
             .then(() => console.log("Job has been deleted"))
             .catch(() => console.log("failed to delete job"))
 
@@ -130,14 +130,6 @@ function Dashboard() {
                         <p className='text-black font-semibold max-sm:text-[18px] text-2xl'>Job tracker</p>
                     </div>
                     <div>
-                        {
-                            /*
-                            <button onClick={handleLogout} className='flex flex-row-reverse items-center gap-2'>
-                                <p className='text-red-600 font-semibold'>Logout</p>
-                                <FontAwesomeIcon className='text-1xl text-red-600' icon={faArrowRightToBracket} />
-                            </button> 
-                            */
-                        }
                         <Link to='/profile'>
                             <FontAwesomeIcon icon={faUserCircle} className='text-xl' />
                         </Link>

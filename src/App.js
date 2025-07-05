@@ -16,6 +16,7 @@ function App() {
         <Route element={<Protected />} >
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='*' element={<Profile />} />
         </Route>
         <Route />
       </Routes>
