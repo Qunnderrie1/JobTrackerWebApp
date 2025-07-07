@@ -85,10 +85,10 @@ function Login() {
                         <input onChange={(e) => setEmail(e.target.value)} value={email} className='form-control' placeholder='Email Address' />
                         <input type='password' onChange={(e) => setPassword(e.target.value)} value={password} className='form-control' placeholder='Password' />
                     </div>
-                    <button onClick={handleLogin} className='mt-14 bg-blue-600 w-full py-2 text-white font-semibold rounded-md'>Login</button>
+                    <button onClick={handleLogin} className='mt-14 bg-indigo-600 w-full py-2 text-white font-semibold rounded-md'>Login</button>
 
                     <div className='mt-7'>
-                        <p className='text-[14px]'>Don't have an account? <Link to='https://jobtrackerwebapp.onrender.com/signup' className='text-blue-600'>Sign Up</Link></p>
+                        <p className='text-[14px]'>Don't have an account? <Link to='https://jobtrackerwebapp.onrender.com/signup' className='bg-indigo-600 font-semibold'>Sign Up</Link></p>
                     </div>
                 </form>
 

@@ -11,16 +11,16 @@ function Profile() {
 
 
     const handleLogout = () => {
-        axios.post(`https://jobtrackerbackend-5ovy.onrender.com/user/logout`)
+        axios.post(`https://jobtrackerbackend-5ovy.onrender.com/user/logout`, { withCredentials: true })
             .then(() => console.log("logging user out"))
             .catch(() => console.log("error login user out"))
         navigate('/')
     }
 
     const handleDeleteAccount = () => {
-        axios.delete(`https://jobtrackerbackend-5ovy.onrender.com/user/delete`)
-            .then(() => console.log("deleting user account"))
-            .catch(() => console.log("error delete user account"))
+        axios.delete(`https://jobtrackerbackend-5ovy.onrender.com/user/delete`, { withCredentials: true })
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err.message))
         navigate('/')
     }
 
