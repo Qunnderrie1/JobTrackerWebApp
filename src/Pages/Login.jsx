@@ -88,7 +88,7 @@ function Login() {
                     <button onClick={handleLogin} className='mt-14 bg-indigo-600 w-full py-2 text-white font-semibold rounded-md'>Login</button>
 
                     <div className='mt-7'>
-                        <p className='text-[14px]'>Don't have an account? <Link to='https://jobtrackerwebapp.onrender.com/signup' className='bg-indigo-600 font-semibold'>Sign Up</Link></p>
+                        <p className='text-[14px]'>Don't have an account? <Link to='https://jobtrackerwebapp.onrender.com/signup' className='text-indigo-600 font-semibold'>Sign Up</Link></p>
                     </div>
                 </form>
 
