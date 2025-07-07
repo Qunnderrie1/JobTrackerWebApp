@@ -3,4 +3,8 @@
   font-family: "Open Sans", sans-serif;
 }
 
-body {}
+.login {}
+
+body {
+  background-color: #f4f4f4;
+}

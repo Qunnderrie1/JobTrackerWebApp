@@ -9,7 +9,8 @@ import Profile from './Pages/Profile';
 
 function App() {
   return (
-    <div className="App overflow-x-hidden ">
+    <div className="App relative">
+
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />

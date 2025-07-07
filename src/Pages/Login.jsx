@@ -53,11 +53,12 @@ function Login() {
     }
 
     return (
-        <div className='flex bg-purple-600  '>
+        <div className='flex bg-white login '>
             <div className='container h-[100vh] flex items-center justify-center'>
                 <form onSubmit={handleSubmit} className='w-[500px] h-fit pb-10 bg-white rounded-lg  px-8 '>
-                    <div className='mt-[20px] py-4'>
-                        <p className='text-3xl  font-semibold text-center text-gray-700 '>Hello!</p>
+                    <div className=' py-4'>
+                        <p className='font-bold text-3xl'>Job Tracker</p>
+                        <p className='text-3xl  font-semibold text-center text-gray-700 mt-[80px] '>Welcome!</p>
                         <p className='text-center font-normal text-gray-700 text-[14px] '>Sign in to your account.</p>
                     </div>
 

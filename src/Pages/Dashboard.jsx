@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import CustomCard from '../Components/CustomCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencil, faTrashCan, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faDotCircle, faHandDots, faListDots, faPencil, faTrashCan, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCurrentJob } from '../Slices/JobSlice'
@@ -124,21 +124,9 @@ function Dashboard() {
 
     return (
         <div className={openUpdateJobModal ? "overflow-hidden" : ""}>
-            <nav className='bg-white w-full p-4 shadow-md  -z-1'>
-                <div className='container flex items-center justify-between z-0'>
-                    <div>
-                        <p className='text-black font-semibold max-sm:text-[18px] text-2xl'>Job tracker</p>
-                    </div>
-                    <div>
-                        <Link to='/profile'>
-                            <FontAwesomeIcon icon={faUserCircle} className='text-xl' />
-                        </Link>
-                    </div>
-                </div>
 
-            </nav>
             {/* New Job Modal */}
-            <div className={openNewJobModal ? 'bg-black w-full h-full absolute top-0 left-0 bg-opacity-50 flex items-center justify-center max-sm:px-2  z-10' : 'hidden'}>
+            <div className={openNewJobModal ? 'bg-black w-full h-[100vh] absolute top-0 left-0 bg-opacity-50 flex items-center justify-center max-sm:px-2  z-10' : 'hidden'}>
                 <div className='bg-white w-[600px] h-fit pb-8 rounded-lg px-4 relative'>
                     <button onClick={() => setOpenNewJobModal(false)} className="btn btn-close absolute right-6 top-8"></button>
                     <p className='text-2xl text-left font-semibold mt-7'>Create A New Job</p>
@@ -181,7 +169,7 @@ function Dashboard() {
 
 
             {/* Update Job Modal */}
-            <div className={openUpdateJobModal ? 'bg-black w-full h-[100vh] absolute left-0 bottom-0 bg-opacity-50 flex items-center justify-center max-sm:px-2 max-sm:bottom-0 max-sm:top-40  z-40' : 'hidden'}>
+            <div className={openUpdateJobModal ? 'bg-black w-full h-[100vh] absolut top-0 left-0 bottom-0 bg-opacity-50 flex items-center justify-center max-sm:px-2 max-sm:bottom-0 max-sm:top-40  z-40' : 'hidden'}>
                 <div className='bg-white w-[600px] h-fit pb-8 rounded-lg px-4 relative'>
                     <button onClick={() => setOpenUpdateModal(false)} className="btn btn-close absolute right-6 top-8"></button>
                     <p className='text-2xl text-left font-semibold mt-7'>Update Job Application</p>
@@ -222,66 +210,58 @@ function Dashboard() {
             </div>
 
             {/*  Heading Container */}
-            <div className='w-full h-fit flex  items-center justify-between pt-20 container '>
-                <h1 className='text-slate-800 text-2xl font-bold text-left  max-sm:text-[14px]  '><span className='font-light'>Hello, </span>{user.username}</h1>
-                <div>
-                    <button disabled={jobs.length == 20 ? true : false} onClick={() => setOpenNewJobModal(true)} className={jobs.length == 20 ? 'text-white bg-blue-400 w-[150px] py-2 rounded-lg font-semibold' : 'text-white bg-blue-600 w-fit py-1 px-3 rounded-md max-sm: '}>Create New</button>
+            <div className='w-full bg-[#f4f4f4] h-fit flex  items-center justify-between  pt-20  '>
+                <div className='container flex justify-between'>
+                    <h1 className='text-slate-800 text-2xl font-normal text-left  max-sm:text-[14px]'>Hello! {user.username ? user.username : "Guest"}</h1>
+                    <div className='flex items-center gap-3'>
+
+                    </div>
+                    <button disabled={jobs.length == 20 ? true : false} onClick={() => setOpenNewJobModal(true)} className={jobs.length == 20 ? 'text-white bg-blue-400 w-[150px] py-2 rounded-lg font-semibold' : 'text-white bg-blue-600 w-fit py-1 px-3 rounded-md max-sm: '}>+</button>
                 </div>
+
+
             </div>
+
+
 
 
             {/* Cards Containers */}
-            <div className='mt-[80px] justify-between flex gap-2 container w-full max-sm:justify-center max-sm:mt-[40px] max-sm:flex-wrap max-sm:w-full'>
-                <CustomCard title="Applied" number={jobs.filter((item) => item.status == "Applied").length} color="bg-blue-600" />
-                <CustomCard title="Interviewed" number={jobs.filter((item) => item.status == "Interviewed").length} color="bg-orange-600" />
-                <CustomCard title="Offer" number={jobs.filter((item) => item.status == "Offer").length} color="bg-green-600" />
-                <CustomCard title="Rejected" number={jobs.filter((item) => item.status == "Rejected").length} color="bg-red-600" />
+            <div className='mt-[10px] justify-between flex gap-2 container w-full max-sm:justify-center max-sm:mt-[10px] max-sm:flex-wrap max-sm:w-full'>
+                <CustomCard title="Applied" number={jobs.filter((item) => item.status == "Applied").length} color="bg-blue-200" />
+                <CustomCard title="Interviewed" number={jobs.filter((item) => item.status == "Interviewed").length} color="bg-orange-200" />
+                <CustomCard title="Offer" number={jobs.filter((item) => item.status == "Offer").length} color="bg-green-200" />
+                <CustomCard title="Rejected" number={jobs.filter((item) => item.status == "Rejected").length} color="bg-red-200" />
             </div>
-
             {/* Filter Container */}
             <div className=''>
-                <div className='mt-[40px] container py-2'>
-                    <div className='bg-white h-[60px] shadow-sm flex justify-between items-center px-4 rounded-tr-lg rounded-tl-lg  '>
-                        <div className='flex gap-8 '>
-                            {/* Filter by job title */}
-                            <div className='flex gap-2 w-full '>
-                                <div className='flex items-center  gap-2'>
-                                    <input onChange={(e) => setAppSearch(e.target.value)} value={appSearch} maxLength="20" className='form-control rounded-lg max-sm:w-full w-[500px]' placeholder='Search By Job Title' />
-                                    <button onClick={() => handleSearch("jobTitle")} className="bg-blue-600 text-white w-[150px] py-2 rounded-lg">Search</button>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 {/* Jobs Container */}
-                <div className=' container w-full'>
+                <div className=' container w-full mt-[40px]'>
                     <div className=' h-[400px] overflow-y-auto bg-white '>
                         <table className='bg-white  w-full shadow-lg   '>
                             <thead className='  rounded-lg sticky overflow-hidden top-0  '>
                                 <tr className=' border-b-2  rounded-full bg-white'>
-                                    <td className='py-3 font-semibold text-gray-800 border-none  max-sm:px-4  '>
-                                        <div className='flex justify-center items-center gap-2'>
-                                            <p className=' font-semibold text-gray-600 border-none max-sm:text-[12px]'>Job Title</p>
+                                    <td className='py-3 font-semibold text-gray-800 border-none  max-sm:px-2  '>
+                                        <div className=' '>
+                                            <p className=' font-semibold text-gray-600 border-none max-sm:text-[12px]'>Position</p>
                                         </div>
                                     </td>
                                     <td className='py-3 font-semibold text-gray-600 border-none  '>
                                         <div className='flex justify-center items-center gap-2'>
-                                            <p className=' font-semibold text-gray-600 border-none max-sm:text-[12px]'>Company Name</p>
+                                            <p className=' font-semibold text-gray-600 border-none max-sm:text-[12px]'>Company </p>
 
                                         </div>
                                     </td>
-                                    <td className='py-3 font-semibold text-gray-600 border-none  '>
+                                    <td className='py-3 font-semibold text-gray-600 border-none  max-sm:px-2 '>
                                         <div className='flex justify-center items-center gap-2'>
                                             <p className=' font-semibold text-gray-600 border-none max-sm:text-[12px]'>Location</p>
 
                                         </div>
                                     </td>
                                     <td className='py-3 font-semibold text-gray-600 border-none  '>
-                                        <div className='flex justify-center items-center gap-2'>
-                                            <p className=' font-semibold text-gray-600 border-none max-sm:text-[12px]'>Application Date</p>
-
+                                        <div className=''>
+                                            <p className=' font-semibold text-gray-600 border-none max-sm:text-[12px]'>Date</p>
                                         </div>
                                     </td>
                                     <td className='py-3 font-semibold text-gray-600 border-none  '>
@@ -342,14 +322,15 @@ function Dashboard() {
 
                         </table>
                     </div>
-                    <div className='bg-white h-[50px] rounded-br-lg rounded-bl-lg w-full flex items-center justify-center relative   '>
+                    <div className='bg-white h-[40px] rounded-br-lg rounded-bl-lg w-full flex items-center justify-center relative   '>
                         {
                             jobs.length == 20 ? <p className='text-red-400'>You have reached the maxium jobs allowed</p> : <p></p>
                         }
                     </div>
                 </div>
             </div>
-            <Footer />
+
+
 
         </div >
     )

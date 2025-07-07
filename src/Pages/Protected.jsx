@@ -2,13 +2,14 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 import Login from './Login'
+import Dashboard from './Dashboard'
 
 
 
 function Protected() {
 
     const { isAuth } = useSelector(state => state.user)
-    return isAuth ? <Outlet /> : <Login />
+    return isAuth ? <Outlet /> : <Dashboard />
 }
 
 
