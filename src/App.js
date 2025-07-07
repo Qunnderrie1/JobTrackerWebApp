@@ -5,6 +5,7 @@ import Login from './Pages/Login';
 import Protected from './Pages/Protected';
 import SignUp from './Pages/SignUp';
 import Profile from './Pages/Profile';
+import NavBar from './Components/NavBar';
 
 
 function App() {
@@ -12,10 +13,10 @@ function App() {
     <div className="App relative">
 
       <Routes>
-        <Route path='/' element={<Login />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route element={<Protected />} >
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/' element={<Dashboard />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='*' element={<Profile />} />
         </Route>

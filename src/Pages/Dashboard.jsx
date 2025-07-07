@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import CustomCard from '../Components/CustomCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDotCircle, faHandDots, faListDots, faPencil, faTrashCan, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faDotCircle, faHandDots, faListDots, faPencil, faTrashCan, faUser, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCurrentJob } from '../Slices/JobSlice'
@@ -21,6 +21,11 @@ function Dashboard() {
     const [appSearchResults, setAppSearchResults] = useState([{}])
 
     const dispatch = useDispatch();
+
+    const time = new Date().getHours();
+
+
+
 
 
     const { job } = useSelector((state) => state.currentJob)
@@ -210,16 +215,18 @@ function Dashboard() {
             </div>
 
             {/*  Heading Container */}
-            <div className='w-full bg-[#f4f4f4] h-fit flex  items-center justify-between  pt-20  '>
+            <div className='w-full bg-[#f4f4f4] h-fit flex  items-center justify-between  py-10  '>
                 <div className='container flex justify-between'>
-                    <h1 className='text-slate-800 text-2xl font-normal text-left  max-sm:text-[14px]'>Hello! {user.username ? user.username : "Guest"}</h1>
-                    <div className='flex items-center gap-3'>
-
+                    <div>
+                        <h1 className='text-slate-800 text-2xl font-normal text-left  max-sm:text-[14px]'>Hello, <span className='font-semibold'>{user.username ? user.username : "Guest"}</span>!</h1>
+                        <p className='text-left'>{time <= 11 ? "Good Morning" : "Good Afternoon"}!</p>
                     </div>
-                    <button disabled={jobs.length == 20 ? true : false} onClick={() => setOpenNewJobModal(true)} className={jobs.length == 20 ? 'text-white bg-blue-400 w-[150px] py-2 rounded-lg font-semibold' : 'text-white bg-blue-600 w-fit py-1 px-3 rounded-md max-sm: '}>+</button>
+                    <div className='flex items-center gap-3'>
+                        <Link to='/profile'>
+                            <FontAwesomeIcon icon={faUser} />
+                        </Link>
+                    </div>
                 </div>
-
-
             </div>
 
 
@@ -227,15 +234,17 @@ function Dashboard() {
 
             {/* Cards Containers */}
             <div className='mt-[10px] justify-between flex gap-2 container w-full max-sm:justify-center max-sm:mt-[10px] max-sm:flex-wrap max-sm:w-full'>
-                <CustomCard title="Applied" number={jobs.filter((item) => item.status == "Applied").length} color="bg-blue-200" />
-                <CustomCard title="Interviewed" number={jobs.filter((item) => item.status == "Interviewed").length} color="bg-orange-200" />
-                <CustomCard title="Offer" number={jobs.filter((item) => item.status == "Offer").length} color="bg-green-200" />
-                <CustomCard title="Rejected" number={jobs.filter((item) => item.status == "Rejected").length} color="bg-red-200" />
+                <CustomCard title="Applied" number={jobs.filter((item) => item.status == "Applied").length} color="bg-blue-500" />
+                <CustomCard title="Interviewed" number={jobs.filter((item) => item.status == "Interviewed").length} color="bg-orange-500" />
+                <CustomCard title="Offer" number={jobs.filter((item) => item.status == "Offer").length} color="bg-green-500" />
+                <CustomCard title="Rejected" number={jobs.filter((item) => item.status == "Rejected").length} color="bg-red-500" />
             </div>
             {/* Filter Container */}
             <div className=''>
+                <div className='container'>
+                    <button disabled={jobs.length == 20 ? true : false} onClick={() => setOpenNewJobModal(true)} className={jobs.length == 20 ? 'text-white bg-blue-400 w-[150px] py-2 rounded-lg font-semibold' : 'text-white bg-blue-600 w-fit py-1 px-3 rounded-md mt-10 flex self-end '}>+</button>
 
-
+                </div>
                 {/* Jobs Container */}
                 <div className=' container w-full mt-[40px]'>
                     <div className=' h-[400px] overflow-y-auto bg-white '>
@@ -297,7 +306,7 @@ function Dashboard() {
                                                 {item.dateApplied}
                                             </td>
                                             <td className='border-gray-100  border-r-2 font-normal max-sm:text-[14px] max-sm:px-4 '>
-                                                <a className='text-blue-500' href={item.link}>{shortWord(item.link)}</a>
+                                                <a className='text-blue-500' href={item.link}>View</a>
 
                                             </td>
                                             <td className='border-gray-100  border-r-2 font-normal max-sm:text-[14px] max-sm:px-4 '>
