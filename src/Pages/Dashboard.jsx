@@ -9,6 +9,7 @@ import { changeStatusColor } from '../Helper/changeStatusColor'
 import { shortWord } from '../Helper/shortWord'
 import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../Components/Footer'
+import NavBar from '../Components/NavBar'
 
 
 
@@ -167,7 +168,7 @@ function Dashboard() {
                             </select>
                         </div>
                     </div>
-                    <button onClick={handleNewJob} className='bg-blue-600 w-full mt-14 py-2 text-white font-semibold text-[18px] rounded-lg'>Submit</button>
+                    <button onClick={handleNewJob} className='bg-indigo-600 w-full mt-14 py-2 text-white font-semibold text-[18px] rounded-lg'>Submit</button>
 
                 </div>
             </div>
@@ -209,13 +210,13 @@ function Dashboard() {
                             </select>
                         </div>
                     </div>
-                    <button onClick={handleSaveChanges} className='bg-blue-600 w-full mt-14 py-2 text-white font-semibold text-[18px] rounded-lg'>Save Changes</button>
+                    <button onClick={handleSaveChanges} className='bg-indigo-600 w-full mt-14 py-2 text-white font-semibold text-[18px] rounded-lg'>Save Changes</button>
 
                 </div>
             </div>
 
             {/*  Heading Container */}
-            <div className='w-full bg-[#f4f4f4] h-fit flex  items-center justify-between  py-10  '>
+            <div className='w-full bg-[#f4f4f4] h-fit flex  items-center justify-between  pt-10 pb-2  '>
                 <div className='container flex justify-between'>
                     <div>
                         <h1 className='text-slate-800 text-2xl font-normal text-left  max-sm:text-[14px]'>Hello, <span className='font-semibold'>{user.username ? user.username : "Guest"}</span>!</h1>
@@ -223,7 +224,7 @@ function Dashboard() {
                     </div>
                     <div className='flex items-center gap-3'>
                         <Link to='/profile'>
-                            <FontAwesomeIcon icon={faUser} />
+                            <FontAwesomeIcon icon={faUser} className='border-2 border-indigo-600 p-3 rounded-full bg-gray-200 text-gray-400' />
                         </Link>
                     </div>
                 </div>
@@ -234,7 +235,7 @@ function Dashboard() {
 
             {/* Cards Containers */}
             <div className='mt-[10px] justify-between flex gap-2 container w-full max-sm:justify-center max-sm:mt-[10px] max-sm:flex-wrap max-sm:w-full'>
-                <CustomCard title="Applied" number={jobs.filter((item) => item.status == "Applied").length} color="bg-blue-500" />
+                <CustomCard title="Applied" number={jobs.filter((item) => item.status == "Applied").length} color="bg-indigo-500" />
                 <CustomCard title="Interviewed" number={jobs.filter((item) => item.status == "Interviewed").length} color="bg-orange-500" />
                 <CustomCard title="Offer" number={jobs.filter((item) => item.status == "Offer").length} color="bg-green-500" />
                 <CustomCard title="Rejected" number={jobs.filter((item) => item.status == "Rejected").length} color="bg-red-500" />
@@ -242,7 +243,7 @@ function Dashboard() {
             {/* Filter Container */}
             <div className=''>
                 <div className='container'>
-                    <button disabled={jobs.length == 20 ? true : false} onClick={() => setOpenNewJobModal(true)} className={jobs.length == 20 ? 'text-white bg-blue-400 w-[150px] py-2 rounded-lg font-semibold' : 'text-white bg-blue-600 w-fit py-1 px-3 rounded-md mt-10 flex self-end '}>+</button>
+                    <button disabled={jobs.length == 20 ? true : false} onClick={() => setOpenNewJobModal(true)} className={jobs.length == 20 ? 'text-white bg-indigo-400 w-[150px] py-2 rounded-lg font-semibold' : 'text-white bg-indigo-600 w-fit py-1 px-3 rounded-md mt-10 flex self-end '}>+</button>
 
                 </div>
                 {/* Jobs Container */}

@@ -54,11 +54,24 @@ function Login() {
 
     return (
         <div className='flex bg-white login '>
+            <img />
             <div className='container h-[100vh] flex items-center justify-center'>
                 <form onSubmit={handleSubmit} className='w-[500px] h-fit pb-10 bg-white rounded-lg  px-8 '>
                     <div className=' py-4'>
-                        <p className='font-bold text-3xl'>Job Tracker</p>
-                        <p className='text-3xl  font-semibold text-center text-gray-700 mt-[80px] '>Welcome!</p>
+                        <div className='flex flex-col py-[20px]'>
+                            <div className='flex justify-center h-fit gap-2 '>
+                                <div className='bg-indigo-600 w-[6px] h-[40px] rounded-full'></div>
+                                <div className='bg-indigo-600 w-[6px] h-[30px] rounded-full'></div>
+                                <div className='bg-indigo-600 w-[6px] h-[20px] rounded-full'></div>
+
+                            </div>
+                            <div>
+                                <p className='font-bold text-2xl  text-indigo-900'>JobTracker</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p className='text-3xl  font-semibold text-center text-gray-700 mt-[20px] '>Welcome!</p>
                         <p className='text-center font-normal text-gray-700 text-[14px] '>Sign in to your account.</p>
                     </div>
 
