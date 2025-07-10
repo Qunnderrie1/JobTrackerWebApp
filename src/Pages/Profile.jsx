@@ -2,17 +2,19 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { logoutUser } from '../Slices/UserSlice'
 
 function Profile() {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
     const handleLogout = () => {
         axios.post(`https://jobtrackerbackend-5ovy.onrender.com/user/logout`, { withCredentials: true })
-            .then(() => console.log("logging user out"))
+            .then(() => dispatch(logoutUser()))
             .catch(() => console.log("error login user out"))
         navigate('/')
     }

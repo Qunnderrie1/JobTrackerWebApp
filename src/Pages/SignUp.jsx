@@ -29,12 +29,12 @@ function SignUp() {
         if (!username && !password && !email) {
             return alert("Please enter in a value")
         }
-        dispatch(creatingUser())
         axios.post("https://jobtrackerbackend-5ovy.onrender.com/user/new", {
             username: username,
             password: password,
             email: email
         }).then((res) => {
+            dispatch(creatingUser())
             if (res.data) {
                 dispatch(signUpSuccess())
                 navigate("/")
