@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
+import { signUpFailed, signUpSuccess, creatingUser } from '../Slices/UserSlice';
 
 function SignUp() {
 
@@ -13,6 +14,7 @@ function SignUp() {
 
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const { errorMsg, isLoading } = useSelector((state) => state.user)
 
@@ -27,16 +29,20 @@ function SignUp() {
         if (!username && !password && !email) {
             return alert("Please enter in a value")
         }
+        dispatch(creatingUser())
         axios.post("https://jobtrackerbackend-5ovy.onrender.com/user/new", {
             username: username,
             password: password,
             email: email
         }).then((res) => {
             if (res.data) {
+                dispatch(signUpSuccess())
                 navigate("/")
             }
         }
-        ).catch(() => console.log("Failed to create user."))
+        ).catch(() => {
+            dispatch(signUpFailed())
+        })
 
     }
 

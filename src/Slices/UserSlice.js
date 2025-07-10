@@ -32,15 +32,25 @@ export const userSlice = createSlice({
             state.errorMsg = true
             state.isLoading = false
             state.isAuth = false
-
-
+        },
+        creatingUser: (state) => {
+            state.isLoading = true
+            state.errorMsg = false
+        },
+        signUpSuccess: (state) => {
+            state.isLoading = false
+            state.errorMsg = false
+        },
+        signUpFailed: (state) => {
+            state.isLoading = false
+            state.errorMsg = "Failed to create user account."
         }
 
     }
 })
 
 
-export const { loginUser, loginFailed, logoutUser, gettingCredentials } = userSlice.actions
+export const { loginUser, loginFailed, logoutUser, gettingCredentials, signUpFailed, signUpSuccess, creatingUser } = userSlice.actions
 
 export default userSlice.reducer
 
