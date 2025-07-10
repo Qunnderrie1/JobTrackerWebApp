@@ -9,7 +9,7 @@ import Dashboard from './Dashboard'
 function Protected() {
 
     const { isAuth } = useSelector(state => state.user)
-    return isAuth ? <Outlet /> : <Dashboard />
+    return isAuth ? <Outlet /> : <Login />
 }
 
 

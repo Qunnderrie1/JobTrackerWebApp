@@ -7,19 +7,19 @@ export const userSlice = createSlice({
         user: {},
         isAuth: false,
         isLoading: false,
-        errorMsg: false
+        errorMsg: false,
 
     },
 
     reducers: {
+        gettingCredentials: (state) => {
+            state.isLoading = true
+            state.errorMsg = false
+        },
         loginUser: (state, action) => {
             state.user = action.payload
             state.isLoading = false
             state.isAuth = true
-        },
-        gettingCredentials: (state) => {
-            state.isLoading = true
-
         },
         logoutUser: (state) => {
             state.user = {}

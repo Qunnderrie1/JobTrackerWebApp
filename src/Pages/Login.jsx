@@ -16,13 +16,14 @@ function Login() {
 
     const dispatch = useDispatch();
 
-    const { errorMsg } = useSelector((state) => state.user)
+    const { errorMsg, isLoading } = useSelector((state) => state.user)
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
     }
 
+    console.log(isLoading)
 
     const handleLogin = () => {
 
@@ -53,9 +54,10 @@ function Login() {
     }
 
     return (
-        <div className='flex bg-white login '>
+        <div className='flex bg-white login relative '>
+
             <img />
-            <div className='container h-[100vh] flex items-center justify-center'>
+            <div className='container h-[100vh] flex items-center justify-center '>
                 <form onSubmit={handleSubmit} className='w-[500px] h-fit pb-10 bg-white rounded-lg  px-8 '>
                     <div className=' py-4'>
                         <div className='flex flex-col py-[20px]'>
