@@ -1,7 +1,7 @@
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { logoutUser } from '../Slices/UserSlice'
@@ -10,6 +10,8 @@ function Profile() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [nonUserName, setNonUserName] = useState("Guest");
+
 
 
     const handleLogout = () => {
@@ -36,7 +38,7 @@ function Profile() {
 
             <div className=' h-full w-full flex flex-col items-center justify-center  mt-[100px] ' >
                 <div className='flex'>
-                    <FontAwesomeIcon className='text-[80px]' icon={faUserCircle} />
+                    <p className='text-[40px] border-indigo-600 border-3 rounded-full w-[80px] h-[80px] flex justify-center items-center text-gray-500  ' >{user.username ? user.username.charAt(0) : nonUserName.charAt(0)}</p>
                 </div>
                 <div className='flex flex-col gap-8'>
                     <div className='mt-[100px] flex justify-between gap-20 items-center'>
