@@ -53,6 +53,11 @@ function Login() {
 
     }
 
+
+    const handleForgotPassword = () => {
+
+    }
+
     return (
         <div className='flex bg-white login relative '>
 
@@ -88,8 +93,9 @@ function Login() {
                         <input type='password' onChange={(e) => setPassword(e.target.value)} value={password} className='form-control' placeholder='Password' />
                     </div>
                     <button onClick={handleLogin} className='mt-14 bg-indigo-600 w-full py-2 text-white font-semibold rounded-md'>Login</button>
+                    {/* <Link to="/resetpassword" className='text-center mt-8 text-[14px] text-indigo-500'>Forgot Password?</Link> */}
 
-                    <div className='mt-7'>
+                    <div className='mt-16'>
                         <p className='text-[14px]'>Don't have an account? <Link to='https://jobtrackerwebapp.onrender.com/signup' className='text-indigo-600 font-semibold'>Sign Up</Link></p>
                     </div>
                 </form>

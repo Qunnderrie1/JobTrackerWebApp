@@ -5,7 +5,8 @@ import Login from './Pages/Login';
 import Protected from './Pages/Protected';
 import SignUp from './Pages/SignUp';
 import Profile from './Pages/Profile';
-import NavBar from './Components/NavBar';
+import ResetPassword from './Pages/ResetPassword';
+import NotFound from './Pages/NotFound';
 
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route element={<Protected />} >
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/resetpassword' element={<ResetPassword />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path='*' element={<Profile />} />
+          <Route path='*' element={<NotFound />} />
         </Route>
         <Route />
       </Routes>

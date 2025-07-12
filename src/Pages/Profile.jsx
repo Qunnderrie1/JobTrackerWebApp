@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { logoutUser } from '../Slices/UserSlice'
 
 function Profile() {
@@ -14,8 +14,9 @@ function Profile() {
 
     const handleLogout = () => {
         axios.post(`https://jobtrackerbackend-5ovy.onrender.com/user/logout`, { withCredentials: true })
-            .then(() => dispatch(logoutUser()))
+            .then(() => console.log("User has logout"))
             .catch(() => console.log("error login user out"))
+        dispatch(logoutUser())
         navigate('/')
     }
 
@@ -32,8 +33,9 @@ function Profile() {
 
     return (
         <div className='container'>
+
             <div className=' h-full w-full flex flex-col items-center justify-center  mt-[100px] ' >
-                <div className=''>
+                <div className='flex'>
                     <FontAwesomeIcon className='text-[80px]' icon={faUserCircle} />
                 </div>
                 <div className='flex flex-col gap-8'>
@@ -51,9 +53,13 @@ function Profile() {
                     </div>
 
                 </div>
-                <div className='mt-[80px] flex flex-col gap-8'>
-                    <button onClick={handleLogout} className='bg-white border-red-600 border-2 font-semibold rounded-sm text-red-600 w-[200px] py-1'>Logout</button>
-                    <button onClick={handleDeleteAccount} className='bg-red-600 text-white w-[200px] py-1'>Delete Account</button>
+                <div className='mt-[80px] flex  gap-8 px-2'>
+                    <button onClick={handleLogout} className='bg-white border-red-600 border-2 font-semibold rounded-md text-red-600 w-[150px] py-1'>Logout</button>
+                    <button onClick={handleDeleteAccount} className='bg-red-600 text-white w-[150px] rounded-md py-1'>Delete Account</button>
+                </div>
+                <div className='flex gap-2 mt-20'>
+                    <p>Go back</p>
+                    <Link to="/dashboard" className='text-indigo-600 font-semibold'>Home</Link>
                 </div>
 
             </div>

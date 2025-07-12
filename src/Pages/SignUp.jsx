@@ -64,7 +64,7 @@ function SignUp() {
                     <p className='text-center font-semibold text-xl'>Create An Account</p>
                     <div className='mt-[60px] flex flex-col gap-8'>
                         <input maxLength="20" onChange={(e) => setUsername(e.target.value)} value={username} className='form-control' placeholder='Username' />
-                        <input maxLength="20" onChange={(e) => setEmail(e.target.value)} value={email} className='form-control' placeholder='Email Address' />
+                        <input type='email' maxLength="20" onChange={(e) => setEmail(e.target.value)} value={email} className='form-control' placeholder='Email Address' />
                         <input maxLength="8" type='password' onChange={(e) => setPassword(e.target.value)} value={password} className='form-control' placeholder='Password' />
                     </div>
                     <button disabled={isLoading ? true : false} onClick={handleSignUp} className={isLoading ? 'mt-14 bg-indigo-500 w-full py-2 text-white font-semibold rounded-md' : 'mt-14 bg-indigo-600 w-full py-2 text-white font-semibold rounded-md'}>{isLoading ? "Please wait while your account is being created." : "Sign Up"}</button>
