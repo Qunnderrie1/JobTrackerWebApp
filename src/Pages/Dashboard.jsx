@@ -16,22 +16,25 @@ import NavBar from '../Components/NavBar'
 function Dashboard() {
 
     const [openNewJobModal, setOpenNewJobModal] = useState(false);
+    const [nonUserName, setNonUserName] = useState("Guest");
     const [openUpdateJobModal, setOpenUpdateModal] = useState(false);
     const [jobs, setJobs] = useState([{}])
-    const [appSearch, setAppSearch] = useState("")
-    const [appSearchResults, setAppSearchResults] = useState([{}])
 
+    //  Dispatch function from job slices
     const dispatch = useDispatch();
 
+    // get time
     const time = new Date().getHours();
 
 
 
 
 
+    //  Get the current job id 
     const { job } = useSelector((state) => state.currentJob)
+    // Get the login user info
     const { user } = useSelector((state) => state.user)
-
+    // State managment for job applications
     const [jobApp, setJobApp] = useState({
         jobTitle: "",
         companyName: "",
@@ -40,7 +43,7 @@ function Dashboard() {
         dateApplied: "",
         status: ""
     })
-
+    // Update job state management
     const [updateJob, setUpdateJob] = useState({
         jobTitle: "",
         companyName: "",
@@ -50,6 +53,7 @@ function Dashboard() {
         status: ""
     })
 
+    // Get fetch all jobs & keep track of any changes
     useEffect(() => {
         axios.get('https://jobtrackerbackend-5ovy.onrender.com/jobs', { withCredentials: true })
             .then((res) => setJobs(res.data))
@@ -58,7 +62,7 @@ function Dashboard() {
     }, [jobs])
 
 
-    // Handle new job method 
+    // Create a new job function
     const handleNewJob = () => {
         axios.post('https://jobtrackerbackend-5ovy.onrender.com/jobs', {
             jobTitle: jobApp.jobTitle,
@@ -70,7 +74,7 @@ function Dashboard() {
         }, { withCredentials: true })
             .then((res) => setUpdateJob(res.data))
             .catch(() => console.error('Failed to create job.'))
-
+        // Set job state managment back to empty state
         setJobApp({
             jobTitle: "",
             companyName: "",
@@ -79,11 +83,12 @@ function Dashboard() {
             dateApplied: "",
             status: "",
         })
+        // Close job modal
         setOpenNewJobModal(false)
     }
 
 
-    // Handle save changes job method 
+    // Update job function
     const handleSaveChanges = () => {
 
         axios.put(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${job}`, {
@@ -101,7 +106,7 @@ function Dashboard() {
 
     }
 
-    // Handle update job method 
+    // Get selected job by user
     const handleUpdateJob = (id) => {
         setOpenUpdateModal(true)
         axios.get(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`, { withCredentials: true })
@@ -110,7 +115,7 @@ function Dashboard() {
         dispatch(getCurrentJob(id))
     }
 
-    // Delete Job Application
+    // Delete job by Id function 
     const handleDeleteJob = (id) => {
         axios.delete(`https://jobtrackerbackend-5ovy.onrender.com/jobs/${id}`, { withCredentials: true })
             .then(() => console.log("Job has been deleted"))
@@ -118,15 +123,6 @@ function Dashboard() {
 
     }
 
-    const handleSearch = (name) => {
-        if (name == "jobTitle") {
-            const i = jobs.filter((item) => item.jobTitle == appSearch)
-            setAppSearchResults(i)
-            console.log(i)
-        }
-
-        setAppSearch("")
-    }
 
     return (
         <div className={openUpdateJobModal ? "overflow-hidden" : ""}>
@@ -215,16 +211,16 @@ function Dashboard() {
                 </div>
             </div>
 
-            {/*  Heading Container */}
+            {/*  Heading Section */}
             <div className='w-full bg-[#f4f4f4] h-fit flex  items-center justify-between  pt-10 pb-2  '>
                 <div className='container flex justify-between'>
                     <div>
-                        <h1 className='text-slate-800 text-2xl font-normal text-left  max-sm:text-[14px]'>Hello, <span className='font-semibold'>{user.username ? user.username : "Guest"}</span>!</h1>
+                        <h1 className='text-slate-800 text-2xl font-normal text-left  max-sm:text-[14px]'>Hello, <span className='font-semibold'>{user.username ? user.username : nonUserName}</span>!</h1>
                         <p className='text-left'>{time <= 11 ? "Good Morning" : "Good Afternoon"}!</p>
                     </div>
                     <div className='flex items-center gap-3'>
                         <Link to='/profile'>
-                            <FontAwesomeIcon icon={faUser} className='border-2 border-indigo-600 p-3 rounded-full bg-gray-200 text-gray-400' />
+                            <p className='border-2 border-indigo-600 flex justify-center items-center w-[50px] h-[50px] rounded-full bg-gray-200 text-gray-400 text-xl '>{user.username ? user.username.charAt(0) : "G"}</p>
                         </Link>
                     </div>
                 </div>
